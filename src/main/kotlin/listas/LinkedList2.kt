@@ -11,23 +11,24 @@ data class LinkedList2<T> (
 
 ){
 
-//    fun add(valorParaAdicionar: T){
-//        val newNode = Node(value = valorParaAdicionar, null)
+//    fun add(value: T){
+//        val newNode = Node(value = value, null)
 
 //        if (head == null){
-//            head = newNode // ou seja, se o head(cabeça/início) for nulo, então quer dizer que não tem nenhum ítem ainda, e assim o head será onde ficara guardado o item
+//            head = newNode
 //            return
 //        } else {
-//            var current = head // current significa atual, por isso começamos declarando ele como o head, para começar do início
-//            while (current?.nextValue != null){ //Neste caso temos que, ele deve ir a pegar o próximo, e próximo, até que o seguinte seja um nulo, ou seja, até que tenha espaço para alocar um newNode
+//            var current = head
+//            while (current?.nextValue != null){
 //                current = current.nextValue
 //            }
-//            current?.nextValue = newNode // Aqui fora do while, é porque o próximo ítem está vazio, assim dizemos que o proximo value(ou seja o espaco vazio) será onde sera alocado o valor novo
+//            current?.nextValue = newNode /
 //        }
 //    }
 
-    fun addOtimizado(valorParaAdicionar: T){
-        val newNode = Node(value = valorParaAdicionar, null)
+/*  Otimização do método de busca */
+    fun addOtimizado(value: T){
+        val newNode = Node(value = value, null)
 
         if(head == null){
             head = newNode
@@ -38,13 +39,13 @@ data class LinkedList2<T> (
         }
     }
 
-    fun remove(valorParaRemover: T){
+    fun remove(value: T){
         if (head == null){
-            return // porque está vazia, não tem oque remover, pode até por um println dizendo que nao tem como remover, porque ta vazio
+            return
         } else {
             var current = head?.nextValue
             var previous = head
-            while (current != null && current.value != valorParaRemover){
+            while (current != null && current.value != value){
                 previous = current
                 current = current.nextValue
             }
@@ -58,12 +59,12 @@ data class LinkedList2<T> (
         var current = head
         if (current == null){
             println("A lista está vazia!!")
-            return // Porque se ta vazia, não precisa ir para o while abaixo
+            return
         }
 
         while(current != null){
             println(current.value)
-            current = current.nextValue // pra continuar andando, tipo o i = i + 1
+            current = current.nextValue
         }
     }
 
@@ -74,14 +75,14 @@ data class LinkedList2<T> (
         }
     }
 
-/*  Função para buscar */
-    fun search(itemProcurado: T){
+/*  Criação do método de busca por um valor específico */
+    fun search(value: T){
         if (head == null){
             println("A lista não possui elementos")
             return
         }
             var current = head
-            while (current?.value != itemProcurado){
+            while (current?.value != value){
             current = current?.nextValue
             }
             println("Valor localizado!! -> ${current?.value}")
