@@ -3,7 +3,7 @@ package filasEpilhas
 import kotlin.random.Random
 
 data class Message(
-    val text: String,
+     val text: String,
     val recipient: String
 )
 

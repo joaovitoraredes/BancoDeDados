@@ -1,4 +1,4 @@
-package Listas
+package listas
 
 data class Node<T>(
     var value: T,
@@ -11,20 +11,20 @@ data class LinkedList2<T> (
 
 ){
 
-    fun add(valorParaAdicionar: T){
-        val newNode = Node(value = valorParaAdicionar, null)
+//    fun add(valorParaAdicionar: T){
+//        val newNode = Node(value = valorParaAdicionar, null)
 
-        if (head == null){
-            head = newNode // ou seja, se o head(cabeça/início) for nulo, então quer dizer que não tem nenhum ítem ainda, e assim o head será onde ficara guardado o item
-            return
-        } else {
-            var current = head // current significa atual, por isso começamos declarando ele como o head, para começar do início
-            while (current?.nextValue != null){ //Neste caso temos que, ele deve ir a pegar o próximo, e próximo, até que o seguinte seja um nulo, ou seja, até que tenha espaço para alocar um newNode
-                current = current.nextValue
-            }
-            current?.nextValue = newNode // Aqui fora do while, é porque o próximo ítem está vazio, assim dizemos que o proximo value(ou seja o espaco vazio) será onde sera alocado o valor novo
-        }
-    }
+//        if (head == null){
+//            head = newNode // ou seja, se o head(cabeça/início) for nulo, então quer dizer que não tem nenhum ítem ainda, e assim o head será onde ficara guardado o item
+//            return
+//        } else {
+//            var current = head // current significa atual, por isso começamos declarando ele como o head, para começar do início
+//            while (current?.nextValue != null){ //Neste caso temos que, ele deve ir a pegar o próximo, e próximo, até que o seguinte seja um nulo, ou seja, até que tenha espaço para alocar um newNode
+//                current = current.nextValue
+//            }
+//            current?.nextValue = newNode // Aqui fora do while, é porque o próximo ítem está vazio, assim dizemos que o proximo value(ou seja o espaco vazio) será onde sera alocado o valor novo
+//        }
+//    }
 
     fun addOtimizado(valorParaAdicionar: T){
         val newNode = Node(value = valorParaAdicionar, null)
@@ -74,21 +74,17 @@ data class LinkedList2<T> (
         }
     }
 
+/*  Função para buscar */
     fun search(itemProcurado: T){
         if (head == null){
             println("A lista não possui elementos")
             return
         }
-
-        else if(head?.value == itemProcurado){
-            println("Valor localizado!! -> ${head?.value}")
-        }  else {
             var current = head
             while (current?.value != itemProcurado){
-                current = current?.nextValue
+            current = current?.nextValue
             }
             println("Valor localizado!! -> ${current?.value}")
-        }
     }
 }
 
@@ -96,33 +92,12 @@ fun main() {
 
     val listaLigada = LinkedList2<String>()
 
-/*  Adicionando normal */
-//  listaLigada.add("Henrique")
-//  listaLigada.add("Carlos")
-//  listaLigada.add("Flavio") ///    listaLigada.add("Lauro")
-
 /*  Adicionando otimizado */
-//   listaLigada.addOtimizado("Felipe")
-//   listaLigada.addOtimizado("Bruno")
+   listaLigada.addOtimizado("Felipe")
+   listaLigada.addOtimizado("Bruno")
 
-/*  Mostrar lista completa */
-//  listaLigada.show()
-
-/*  Removendo um ítem da lista */
-//  listaLigada.remove("2")
-
-/*  Mostrar lista completa após remoção */
-//  listaLigada.show()
-
-/*  Verificar se lista está vazia */
-//  listaLigada.isEmpty()
-
-/*  Buscar por item na lista */
-//    listaLigada.search("Henrique")
-//    listaLigada.search("Carlos")
-//    listaLigada.search("Flavio")
+/*  Buscando resultados */
     listaLigada.search("Felipe")
     listaLigada.search("Bruno")
-    listaLigada.search("Brunsso")
 
 }
